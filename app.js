@@ -1,4 +1,3 @@
-
 // ----------------------------------------------Basic ------------------------------------------------------
 
 // Ex1.1 - Yes or No Complete the method that takes a boolean value and return a "Yes" string for true,
@@ -8,185 +7,165 @@ let x = "12";
 
 console.log(x < 10 && x > 1 ? "yes" : "no");
 
-
 // ----------------------------------------------Simple Math------------------------------------------------------
 
-// Ex2.1 - Sum of lowest numbers 
-// Create a function that returns the sum of the two lowest positive numbers given an array of 
-// minimum 4 positive integers. No floats or non-positive integers will be passed. 
-// For example, when an array is passed like [19, 5, 42, 2, 77], the output should be 7. 
+// Ex2.1 - Sum of lowest numbers
+// Create a function that returns the sum of the two lowest positive numbers given an array of
+// minimum 4 positive integers. No floats or non-positive integers will be passed.
+// For example, when an array is passed like [19, 5, 42, 2, 77], the output should be 7.
 // [10, 343445353, 3453445, 3453545353453] should return 3453455.
 
-const SumMinNumberInArr=(arr) =>{
+const SumMinNumberInArr = (arr) => {
+  var i = 0;
+  let minNumber = arr[0];
+  for (i = 0; i < arr.length; i++) {
+    if (minNumber > arr[i]) {
+      minNumber = arr[i];
+      var j = 0;
 
-        var i=0 
-            let minNumber = arr[0];     
-            for (i=0; i<arr.length; i++) {
-            
-                if(minNumber>arr[i]){
-                    minNumber=arr[i];
-                    var j=0
-                    
-                    let SecondMinNumber = arr[1];
-                    
-                    for (j=0; j<arr.length; j++) {
-                    
-                    if(SecondMinNumber>arr[j] && arr[j] != arr[i]){
-                            SecondMinNumber=arr[j];
-                            }
-                        }
-                        
-                    }
-                }
-                return (minNumber + SecondMinNumber);
-            }
-            console.log(arr[19, 5, 42, 2, 77]);
+      let SecondMinNumber = arr[1];
+
+      for (j = 0; j < arr.length; j++) {
+        if (SecondMinNumber > arr[j] && arr[j] != arr[i]) {
+          SecondMinNumber = arr[j];
+        }
+      }
+    }
+  }
+  return minNumber + SecondMinNumber;
+};
+console.log(SumMinNumberInArr[(19, 5, 42, 2, 77)]);
 
 //                             ***************************
 
- // Ex2.2 - One and Zero - Binary             
- // Given an array of ones and zeroes, convert the equivalent binary value to an integer. 
-// Eg: [0, 0, 0, 1] is treated as 0001 which is the binary representation of 1. 
+// Ex2.2 - One and Zero - Binary
+// Given an array of ones and zeroes, convert the equivalent binary value to an integer.
+// Eg: [0, 0, 0, 1] is treated as 0001 which is the binary representation of 1.
 
- // Examples: 
+// Examples:
 
-            // Testing: [0, 0, 0, 1] ==> 1 
-            // Testing: [0, 0, 1, 0] ==> 2 
-            // Testing: [0, 1, 0, 1] ==> 5 
-            // Testing: [1, 0, 0, 1] ==> 9 
-            // Testing: [0, 0, 1, 0] ==> 2 
-            // Testing: [0, 1, 1, 0] ==> 6 
-            // Testing: [1, 1, 1, 1] ==> 15 
-            // Testing: [1, 0, 1, 1] ==> 11 
-            // However, the arrays can have varying lengths, not just limited to 4.
+// Testing: [0, 0, 0, 1] ==> 1
+// Testing: [0, 0, 1, 0] ==> 2
+// Testing: [0, 1, 0, 1] ==> 5
+// Testing: [1, 0, 0, 1] ==> 9
+// Testing: [0, 0, 1, 0] ==> 2
+// Testing: [0, 1, 1, 0] ==> 6
+// Testing: [1, 1, 1, 1] ==> 15
+// Testing: [1, 0, 1, 1] ==> 11
+// However, the arrays can have varying lengths, not just limited to 4.
 
-
-
-    const arr = [1, 1, 1, 1];
-        const parseArray = arr => {
-            return arr.reduce((acc, val) => {
-            return (acc << 1) | val;
-            });
-            };
+const arr = [1, 1, 1, 1];
+const parseArray = (arr) => {
+  return arr.reduce((acc, val) => {
+    return (acc << 1) | val;
+  });
+};
 
 console.log(parseArray(arr));
 
 //                             ***************************
 
-// Ex2.3 - Find the Next Perfect Square 
- 
-// You might know some pretty large perfect squares. But what about the NEXT one? 
- 
-// Complete the findNextSquare method that finds the next integral perfect square after the one 
-// passed as a parameter. Recall that an integral perfect square is an integer n such that sqrt(n) is 
-// also an integer. 
- 
-// If the parameter is itself not a perfect square then -1 should be returned. You may assume the 
-// parameter is positive. 
- 
-// Examples: 
- 
-// findNextSquare(121) --> returns 144 
-// findNextSquare(625) --> returns 676 
+// Ex2.3 - Find the Next Perfect Square
+
+// You might know some pretty large perfect squares. But what about the NEXT one?
+
+// Complete the findNextSquare method that finds the next integral perfect square after the one
+// passed as a parameter. Recall that an integral perfect square is an integer n such that sqrt(n) is
+// also an integer.
+
+// If the parameter is itself not a perfect square then -1 should be returned. You may assume the
+// parameter is positive.
+
+// Examples:
+
+// findNextSquare(121) --> returns 144
+// findNextSquare(625) --> returns 676
 // findNextSquare(114) --> returns -1 since 114 is not a perfect
 
-
 const math = {
-    findNextSquare :  function(x) {
-        let y=Math.sqrt(x);
-        return (y+1)*(y+1);
-    }
-    };
-    math.findNextSquare(121);
+  findNextSquare: function (x) {
+    let y = Math.sqrt(x);
+    return (y + 1) * (y + 1);
+  },
+};
+math.findNextSquare(121);
 
 //                             ***************************
 
-    // Ex2.4 - Unique 
-    // There is an array with some numbers. All numbers are equal except for one. Try to find it! 
-    // findUniq([ 1, 1, 1, 2, 1, 1 ]) === 2 
-    // findUniq([ 0, 0, 0.55, 0, 0 ]) === 0.55 
-    // It’s guaranteed that array contains at least 3 numbers.
-    
-    function uniqNum (arr){
-    const findUniq= arr.sort((a, b) => a-b);
-    return findUniq[0] === findUniq[1] ? findUniq[findUniq.length-1] :  findUniq[0];   
-    };
+// Ex2.4 - Unique
+// There is an array with some numbers. All numbers are equal except for one. Try to find it!
+// findUniq([ 1, 1, 1, 2, 1, 1 ]) === 2
+// findUniq([ 0, 0, 0.55, 0, 0 ]) === 0.55
+// It’s guaranteed that array contains at least 3 numbers.
 
-
-console.log(uniqNum([ 1, 1, 1, 2, 1, 1 ]));
-console.log(uniqNum([ 0, 0, 0.55, 0, 0 ]));
-
-
-
-
-//                             ***************************
-//     Write a program that finds the summation of every number from 1 to num. The number will 
-// always be a positive integer greater than 0. 
- 
-// For example: 
-// summation(2) -> 3 
-// 1 + 2 
- 
-// summation(8) -> 36 
-// 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8
-
-	function summation(n)
-	{
-		
-		
-		let result = 0;
-	
-		
-		for (let x = 1; x <= n; x++)
-			result += sumOfDigits(x);
-	
-		return result;
-	}
-	
-
-	function sumOfDigits(x)
-	{
-		let sum = 0;
-		
-		while (x != 0)
-		{
-			sum += x % 10;
-			x = parseInt(x / 10, 10);
-		}
-		
-		return sum;
-	}
-	
-	summation(8);
-			
-	document.write("Sum of digits"
-					+ " in numbers from 1 to "
-					+ n + " is "
-					+ summation(n));
-					
-
-//                             ***************************
-// Ex2.6 - Years and Centuries 
- 
-// The first century spans from the year 1 up to and including the year 100, The second - from the 
-// year 101 up to and including the year 200, etc. 
-// Task : 
-// Given a year, return the century it is in. 
-// Input , Output Examples :: 
-// centuryFromYear(1705)  returns (18) 
-// centuryFromYear(  1900)  returns (19) 
-// centuryFromYear(1601)  returns (17) 
-// centuryFromYear(2000)  returns (20)
-
-const centuryFromYear =();
-let year =centuryFromYear.length;
-for(let i=0; i<centuryFromYear.length; i++)
-if(year[2][3]=== 0){
-     return (year[0][1]);
-}else{
-(year[0]*10 + year[1]+1);
+function uniqNum(arr) {
+  const findUniq = arr.sort((a, b) => a - b);
+  return findUniq[0] === findUniq[1]
+    ? findUniq[findUniq.length - 1]
+    : findUniq[0];
 }
 
+console.log(uniqNum([1, 1, 1, 2, 1, 1]));
+console.log(uniqNum([0, 0, 0.55, 0, 0]));
+
+//                             ***************************
+//     Write a program that finds the summation of every number from 1 to num. The number will
+// always be a positive integer greater than 0.
+
+// For example:
+// summation(2) -> 3
+// 1 + 2
+
+// summation(8) -> 36
+// 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8
+
+function summation(n) {
+  let result = 0;
+
+  for (let x = 1; x <= n; x++) result += sumOfDigits(x);
+
+  return result;
+}
+
+function sumOfDigits(x) {
+  let sum = 0;
+
+  while (x != 0) {
+    sum += x % 10;
+    x = parseInt(x / 10, 10);
+  }
+
+  return sum;
+}
+
+summation(8);
+
+// console.log(
+//   "Sum of digits" + " in numbers from 1 to " + n + " is " + summation(n)
+// );
+
+//                             ***************************
+// Ex2.6 - Years and Centuries
+
+// The first century spans from the year 1 up to and including the year 100, The second - from the
+// year 101 up to and including the year 200, etc.
+// Task :
+// Given a year, return the century it is in.
+// Input , Output Examples ::
+// centuryFromYear(1705)  returns (18)
+// centuryFromYear(  1900)  returns (19)
+// centuryFromYear(1601)  returns (17)
+// centuryFromYear(2000)  returns (20)
+
+const centuryFromYear = function () {
+  let year = centuryFromYear.length;
+  for (let i = 0; i < centuryFromYear.length; i++)
+    if (year[2][3] === 0) {
+      return year[0][1];
+    } else {
+      year[0] * 10 + year[1] + 1;
+    }
+};
 
 //                             ***************************
 // Ex2.7 - Basic Math
@@ -195,11 +174,10 @@ if(year[2][3]=== 0){
 // value2(number).
 // The function should return result of numbers after applying the chosen operation.
 // Examples
-basicOp('+', 4, 7) // Output: 11
-basicOp('-', 15, 18) // Output: -3
-basicOp('*', 5, 5) // Output: 25
-basicOp('/', 49, 7) // Output: 7
-
+basicOp("+", 4, 7); // Output: 11
+basicOp("-", 15, 18); // Output: -3
+basicOp("*", 5, 5); // Output: 25
+basicOp("/", 49, 7); // Output: 7
 
 // const math = {
 //     findNextSquare :  function(x) {
@@ -208,21 +186,16 @@ basicOp('/', 49, 7) // Output: 7
 //     }
 //     };
 
- function basicOp (string, num1, num2){
+function basicOp(string, num1, num2) {
+  if (string === "+") return num1 + num2;
+  if (string === "-") return num1 - num2;
+  if (string === "*") return num1 * num2;
+  if (string === "/") return num1 / num2;
+}
+basicOp("-", 15, 18);
 
-
-        if( string ==='+') return (num1 + num2);
-        if( string ==='-') return (num1 - num2);
-        if( string ==="*") return (num1 * num2);
-        if( string ==='/') return (num1 / num2);
-
-    }
-    basicOp('-', 15, 18)
- 
-   
 // ---------------------------------------------- Math In Story -----------------------------------------------------
 
-    
 // Ex3.1 - Growth Of population
 // In a small town the population is p0 = 1000 at the beginning of a year. The population regularly
 // increases by 2 percent per year and moreover 50 new inhabitants per year come to live in the
@@ -246,20 +219,18 @@ basicOp('/', 49, 7) // Output: 7
 // Note: Don't forget to convert the percent parameter as a percentage in the body of your
 // function: if the parameter percent is 2 you have to convert it to 0.02.
 
-function nbYear(p0, percent, aug, p){
-    population=p0;
-    years=0;
+function nbYear(p0, percent, aug, p) {
+  population = p0;
+  years = 0;
 
-    while(population<p){
-        population = population + population*(percent/100) + aug;
-        years++
-    }
-    return years;
+  while (population < p) {
+    population = population + population * (percent / 100) + aug;
+    years++;
+  }
+  return years;
 }
 
 console.log(nbYear(1500, 5, 100, 5000));
-
-
 
 //                             ***************************
 // Ex3.2 - People on the Bus
@@ -279,14 +250,26 @@ console.log(nbYear(1500, 5, 100, 5000));
 // const testArr2 =  [[10,0],[954,1],[8,2],[7,3],[6,4],[5,5],[4,6],[3,7],[2,8],[1,9],[0,9]];
 // const testArr3 =  [[10,0],[9,1],[8,2],[7,3],[6,432],[55005,5],[4,6],[3,7],[2,8],[1,9],[0,9]];
 
-const testArr =  [[10,0],[9,1],[8,2],[7,3],[6,4],[5,5],[4,6],[3,7],[2,8],[1,9],[0,9]];
+const testArr = [
+  [10, 0],
+  [9, 1],
+  [8, 2],
+  [7, 3],
+  [6, 4],
+  [5, 5],
+  [4, 6],
+  [3, 7],
+  [2, 8],
+  [1, 9],
+  [0, 9],
+];
 function peopleOnTheBus(arr) {
-let total=0;
- for(let i=0; i<arr.length; i++) {
-    total= total+arr[i][0]-arr[i][1];
- }
- console.log(total);
-};
+  let total = 0;
+  for (let i = 0; i < arr.length; i++) {
+    total = total + arr[i][0] - arr[i][1];
+  }
+  console.log(total);
+}
 console.log(peopleOnTheBus(testArr));
 // console.log(peopleOnTheBus(testArr2));
 // console.log(peopleOnTheBus(testArr3));
@@ -308,23 +291,19 @@ console.log(peopleOnTheBus(testArr));
 // or this:
 // 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, …
 
-
 // num++
 
-
-
-const FibonacciNum = function (n){
-
-    if(n ===1 ){
-        return [0, 1];
-    }else{
-    let i= FibonacciNum(n-1); 
-    i.push(i[i.length-1]+i[i.length-2]);
+const FibonacciNum = function (n) {
+  if (n === 1) {
+    return [0, 1];
+  } else {
+    let i = FibonacciNum(n - 1);
+    i.push(i[i.length - 1] + i[i.length - 2]);
     return i;
-        }
-}; 
+  }
+};
 
-console.log(FibonacciNum(12))
+console.log(FibonacciNum(12));
 
 //                             ***************************
 
@@ -348,41 +327,32 @@ console.log(FibonacciNum(12))
 // return an empty array (except in C return NULL) and be ready for anything else which is not
 // clearly specified ;
 
+const Tribonacci = function (beginArr, n) {
+  if (n == 0) return [];
+  if (n == "c") return null;
+  if (n == 1) return [0, 0, 1];
+  for (let i = beginArr.length; i < n; i++) {
+    beginArr.push(beginArr[i - 1] + beginArr[i - 2] + beginArr[i - 3]);
+  }
+  return beginArr;
+};
 
-
-const Tribonacci  = function (beginArr,n){
-    if(n == 0) return [];
-    if(n== 'c') return null;
-    if(n == 1 ) return [0,0, 1];
-    for(let i = beginArr.length; i<n;i++){
-        beginArr.push(beginArr[i-1]+beginArr[i-2]+beginArr[i-3]);
-        
-} return beginArr;
-} 
-
-console.log(Tribonacci([1,1,1],5))
-
-
-
+console.log(Tribonacci([1, 1, 1], 5));
 
 // ----------------------------------------------Basic Iteration Logic -----------------------------------------------------
-
 
 // Ex5.1 - trimming string
 // It's pretty straightforward. Your goal is to create a function that removes the first and last
 // characters of a string. You're given one parameter, the original string. You don't have to worry
 // with strings with less than two characters.
 
-function func() { 
-      
-    const array = ["GFG", "Geeks", "for", "Geeks"]; 
-     console.log(array.shift())
-     console.log(array.pop());
-} 
-  
-func(); 
+function func() {
+  const array = ["GFG", "Geeks", "for", "Geeks"];
+  console.log(array.shift());
+  console.log(array.pop());
+}
 
-
+func();
 
 //                             ***************************
 // Ex5.2 - String Repeat
@@ -390,16 +360,12 @@ func();
 // repeatStr(6, "I") // "IIIIII"
 // repeatStr(5, "Hello") // "HelloHelloHelloHelloHello"
 
-
-function repeat_str(countTime, str)  {
-    let string=str;
-    return string.repeat(countTime);
-
+function repeat_str(countTime, str) {
+  let string = str;
+  return string.repeat(countTime);
 }
 console.log(repeat_str(6, "I"));
 console.log(repeat_str(5, "Hello"));
-
-
 
 //                             ***************************
 // Ex5.3 - To Camel Case
@@ -411,21 +377,18 @@ console.log(repeat_str(5, "Hello"));
 // toCamelCase("The_Stealth_Warrior") // returns "TheStealthWarrior"
 
 // examples aBC-def > abcDef     ABC_def-GHI > AbcDefGhi
-function toCamelCase(word){
-   const words= word.split(/[-_]+/);
-   for(let i=0; i<words.length; i++){
-
-    if (i===0){
-        words[i] = words[i][0] + words[i].slice(1).toLowerCase();
+function toCamelCase(word) {
+  const words = word.split(/[-_]+/);
+  for (let i = 0; i < words.length; i++) {
+    if (i === 0) {
+      words[i] = words[i][0] + words[i].slice(1).toLowerCase();
     } else {
-        words[i] = words[i][0].toUpperCase() + words[i].slice(1).toLowerCase();
+      words[i] = words[i][0].toUpperCase() + words[i].slice(1).toLowerCase();
     }
-   }
-   return words.join('');
-   
+  }
+  return words.join("");
 }
 console.log(toCamelCase("the-stealth-warrior"));
-
 
 //                             ***************************
 // Ex5.4 - To Weird Case
@@ -439,16 +402,16 @@ console.log(toCamelCase("the-stealth-warrior"));
 // toWeirdCase( "String" );//=> returns "StRiNg"
 // toWeirdCase( "Weird string case" );//=> returns "WeIrD StRiNg CaSe"
 
-
-function toWeirdCase (string){
-    let newString= " ";
-    for(let i = 0; i< string.length ; i++){
-        newString += (i % 2 === 0)? string[i].toUpperCase():string[i].toLowerCase();
-      }
-      return newString;
-    }
-    toWeirdCase("String");
-    toWeirdCase( "Weird string case" );
+function toWeirdCase(string) {
+  let newString = " ";
+  for (let i = 0; i < string.length; i++) {
+    newString +=
+      i % 2 === 0 ? string[i].toUpperCase() : string[i].toLowerCase();
+  }
+  return newString;
+}
+toWeirdCase("String");
+toWeirdCase("Weird string case");
 
 //                             ***************************
 // Ex5.5 - Abbreviate two words
@@ -459,23 +422,21 @@ function toWeirdCase (string){
 // Sam Harris => S.H
 // Patrick Feeney => P.F6.6
 
-
 const fullName1 = "Sam Harris";
 const fullName2 = "Patrick Feeney";
 
-
 const getInitials = (name) => {
-  let  initials = name.split(' ');
-  
-  if(initials.length > 1) {
-    initials = initials.shift().charAt(0) +"." + initials.shift().charAt(0);
+  let initials = name.split(" ");
 
-  return initials.toUpperCase();
-}
-}
+  if (initials.length > 1) {
+    initials = initials.shift().charAt(0) + "." + initials.shift().charAt(0);
 
-console.log(getInitials(fullName1)); 
-console.log(getInitials(fullName2)); 
+    return initials.toUpperCase();
+  }
+};
+
+console.log(getInitials(fullName1));
+console.log(getInitials(fullName2));
 
 //                             ***************************
 // Ex5.6 - Mask
@@ -493,18 +454,17 @@ console.log(getInitials(fullName2));
 // maskify("Nananananananananananananananana Batman!") ==
 // "####################################man!"
 
-function maskify(changesAll){
-    let arr=changesAll.slice(-4)
-    let arr2= changesAll.split(" ")
-    for (let i = 0; i < arr2.length; i++) {
-    arr2[i]= arr2[i].replace(/[a-zA-Z0-9" "]/g, '#');
-    }
-    let str= arr2.join("#");
-    let total= str.slice(0,-4) + arr
-    return total
+function maskify(changesAll) {
+  let arr = changesAll.slice(-4);
+  let arr2 = changesAll.split(" ");
+  for (let i = 0; i < arr2.length; i++) {
+    arr2[i] = arr2[i].replace(/[a-zA-Z0-9" "]/g, "#");
+  }
+  let str = arr2.join("#");
+  let total = str.slice(0, -4) + arr;
+  return total;
 }
 console.log(maskify("Skippy"));
-
 
 //                             ***************************
 // Ex5.7 - shortest words
@@ -512,22 +472,20 @@ console.log(maskify("Skippy"));
 // String will never be empty and you do not need to account for different data types
 
 function shortestWordsList(words) {
-    let word = words.split(" ");
-    let shortestWords= word[0].length;
+  let word = words.split(" ");
+  let shortestWords = word[0].length;
 
-for(let i=0; i<word.length; i++){
-    if(word[i].length < shortestWords){
-        shortestWords=word[i].length;
+  for (let i = 0; i < word.length; i++) {
+    if (word[i].length < shortestWords) {
+      shortestWords = word[i].length;
     }
-}
-return shortestWords;
+  }
+  return shortestWords;
 }
 
-console.log(shortestWordsList('hello hey world israel'));
-
+console.log(shortestWordsList("hello hey world israel"));
 
 // ----------------------------------------------Advanced Iteration Logic -----------------------------------------------------
-
 
 // Ex6.1 - Mumbling
 // This time no story, no theory. The examples below show you how to write function
@@ -538,17 +496,17 @@ console.log(shortestWordsList('hello hey world israel'));
 // accum("cwAt") -> "C-Ww-Aaa-Tttt"
 // The parameter of accum is a string which includes only letters from a..z and A..Z.
 
+function accum(Mumbling) {
+  let letters = Mumbling.split("");
+  let words = [];
 
-function  accum(Mumbling){
-    let letters =  Mumbling.split('');
-    let words=[];
-    
-    for( let i=0; i<letters.length; i++){
-       words.push(letters[i].toUpperCase()+ Array(i+1).join(letters[i].toLowerCase()));
-    }
+  for (let i = 0; i < letters.length; i++) {
+    words.push(
+      letters[i].toUpperCase() + Array(i + 1).join(letters[i].toLowerCase())
+    );
+  }
 
-    return words.join("-"); 
-
+  return words.join("-");
 }
 console.log(accum("cwAt"));
 console.log(accum("abcd"));
@@ -569,30 +527,30 @@ console.log(accum("RqaEzty"));
 // "aA11" -> 2 # 'a' and '1'
 // "ABBA" -> 2 # 'A' and 'B' each occur twice
 
-function duplicatecount(text){
-    let count=0
-    let obj={}
+function duplicatecount(text) {
+  let count = 0;
+  let obj = {};
 
-    for(let i of text){
-        i = i.toLowerCase()
-        if(!obj[i]){
-            obj[i]=1
-        } else{ 
-            obj[i]++
-        }
+  for (let i of text) {
+    i = i.toLowerCase();
+    if (!obj[i]) {
+      obj[i] = 1;
+    } else {
+      obj[i]++;
     }
-    for(let i in obj){
-        if(obj[i]>1){
-            count++
-        }
+  }
+  for (let i in obj) {
+    if (obj[i] > 1) {
+      count++;
     }
-    return count
+  }
+  return count;
 }
 
-console.log(duplicatecount(""), 0);
-console.log(duplicatecount("abcde"), 0);
-console.log(duplicatecount("aabbcde"), 2);
-console.log(duplicatecount("aabBcde"), 2); 
+console.log(duplicatecount("Indivisibilitiest"));
+console.log(duplicatecount("abcde"));
+console.log(duplicatecount("aabbcde"));
+console.log(duplicatecount("aabBcde"));
 
 //                             ***************************
 // Ex6.3 - organize strings
@@ -606,14 +564,13 @@ console.log(duplicatecount("aabBcde"), 2);
 // a = "abcdefghijklmnopqrstuvwxyz"
 // longest(a, a) -> "abcdefghijklmnopqrstuvwxyz"
 
-function longest (a, b){
-    const listA= a.split('')
-    const listB= b.split('')
-    const listAB =new Set(listA.concat(listB).sort());
-    console.log(...listAB)
+function longest(a, b) {
+  const listA = a.split("");
+  const listB = b.split("");
+  const listAB = [...new Set(listA.concat(listB).sort())].join("");
+  console.log(listAB);
 }
-longest('xxxxyyyyabklmopq', "xyaabbbccccdefww")
-
+longest("xxxxyyyyabklmopq", "xyaabbbccccdefww");
 
 //                             ***************************
 
@@ -625,31 +582,26 @@ longest('xxxxyyyyabklmopq', "xyaabbbccccdefww")
 // isIsogram("aba") == false
 // isIsogram("moOse") == false // -- ignore letter cas
 
-function duplicatecount(text){
-    let count=0
-    let obj={}
-
-    for(let i of text){
-        i = i.toLowerCase()
-        if(!obj[i]){
-            obj[i]=1
-        } else{ 
-            obj[i]++
-        }
+function duplicatecount(text) {
+  let count = 0;
+  let obj = {};
+  let isTrue = true;
+  for (let i of text) {
+    i = i.toLowerCase();
+    if (!obj[i]) {
+      obj[i] = 1;
+    } else {
+      obj[i]++;
     }
-    for(let i in obj){
-        if(obj[i]>1){
-            count++
-        }
+  }
+  for (let i in obj) {
+    if (obj[i] > 1) {
+      count++;
     }
-    return obj
+  }
+  if (count >= 1) isTrue = false;
+  return isTrue;
 }
-
-
-console.log(duplicatecount(""));
-console.log(duplicatecount("abcde"));
-console.log(duplicatecount("aabbcde"));
-console.log(duplicatecount("aabBcde")); 
-
-
-count +
+console.log(duplicatecount("Dermatoglyphics"));
+console.log(duplicatecount("aba"));
+console.log(duplicatecount("moOse"));
